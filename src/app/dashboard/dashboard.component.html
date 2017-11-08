@@ -1,3 +1,55 @@
-<p>
-  dashboard works!
-</p>
+<div class="container">
+  <div class="row h-50">
+    <div class="col">
+      <div class="card dashboard-column">
+        <div class="card-header">
+          <h5>Backlog</h5>
+        </div>
+        <div class="card-body" (drop)="drop($event)" (dragover)="allowDrop($event)">
+          <div id="ticket-5" class="card bg-light" draggable="true" (dragstart)="drag($event)">
+            <div class="card-body">
+              <h6 class="card-title">Ticket 5</h6>
+              <div class="card-text">Ticket 5 description</div>
+            </div>
+          </div>
+          <div id="ticket-6" class="card bg-info" draggable="true" (dragstart)="drag($event)">
+            <div class="card-body">
+              <h6 class="card-title">Ticket 6</h6>
+              <div class="card-text">Ticket 6 description</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card dashboard-column">
+        <div class="card-header">
+          <h5>In Progress</h5>
+        </div>
+        <div class="card-body" (drop)="drop($event)" (dragover)="allowDrop($event)">
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card dashboard-column">
+        <div class="card-header">
+          <h5>Done</h5>
+        </div>
+        <div class="card-body" (drop)="drop($event)" (dragover)="allowDrop($event)">
+          <div id="ticket-1" class="card bg-success" draggable="true" (dragstart)="drag($event)">
+            <div class="card-body">
+              <h6 class="card-title">Ticket 1</h6>
+              <div class="card-text">Ticket 1 was done</div>
+            </div>
+          </div>
+          <div id="ticket-2" class="card bg-danger" draggable="true" (dragstart)="drag($event)">
+            <div class="card-body">
+              <h6 class="card-title">Ticket 2</h6>
+              <div class="card-text">Ticket 2 was blocked</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

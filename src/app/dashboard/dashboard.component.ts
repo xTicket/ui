@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -8,7 +9,8 @@ import * as $ from 'jquery';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
@@ -19,16 +21,16 @@ export class DashboardComponent implements OnInit {
 
   drop(event) {
     event.preventDefault();
-    var domId = event.dataTransfer.getData("id"),
+    const domId = event.dataTransfer.getData('id'),
       target = event.target,
-      dashboardColumn = $(target).parents("div.card.dashboard-column"),
-      columnBody = dashboardColumn.children("div.card-body");
+      dashboardColumn = $(target).parents('div.card.dashboard-column'),
+      columnBody = dashboardColumn.children('div.card-body');
 
     columnBody.append(document.getElementById(domId));
   }
 
   drag(event) {
-    event.dataTransfer.setData("id", event.target.id);
+    event.dataTransfer.setData('id', event.target.id);
   }
 
 }

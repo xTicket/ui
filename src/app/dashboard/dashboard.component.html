@@ -1,18 +1,18 @@
 <div class="container">
-  <div class="row h-50">
+  <div class="row">
     <div class="col">
       <div class="card dashboard-column">
         <div class="card-header">
           <h5>Backlog</h5>
         </div>
         <div class="card-body" (drop)="drop($event)" (dragover)="allowDrop($event)">
-          <div id="ticket-5" class="card bg-light" draggable="true" (dragstart)="drag($event)">
+          <div id="ticket-5" class="card bg-light" [routerLink]="['/dashboard', 'ticket-5']" draggable="true" (dragstart)="drag($event)">
             <div class="card-body">
               <h6 class="card-title">Ticket 5</h6>
               <div class="card-text">Ticket 5 description</div>
             </div>
           </div>
-          <div id="ticket-6" class="card bg-info" draggable="true" (dragstart)="drag($event)">
+          <div id="ticket-6" class="card bg-info" [routerLink]="['/dashboard', 'ticket-6']" draggable="true" (dragstart)="drag($event)">
             <div class="card-body">
               <h6 class="card-title">Ticket 6</h6>
               <div class="card-text">Ticket 6 description</div>
@@ -36,13 +36,13 @@
           <h5>Done</h5>
         </div>
         <div class="card-body" (drop)="drop($event)" (dragover)="allowDrop($event)">
-          <div id="ticket-1" class="card bg-success" draggable="true" (dragstart)="drag($event)">
+          <div id="ticket-1" class="card bg-success" [routerLink]="['/dashboard', 'ticket-1']" draggable="true" (dragstart)="drag($event)">
             <div class="card-body">
               <h6 class="card-title">Ticket 1</h6>
               <div class="card-text">Ticket 1 was done</div>
             </div>
           </div>
-          <div id="ticket-2" class="card bg-danger" draggable="true" (dragstart)="drag($event)">
+          <div id="ticket-2" class="card bg-danger" [routerLink]="['/dashboard', 'ticket-2']" draggable="true" (dragstart)="drag($event)">
             <div class="card-body">
               <h6 class="card-title">Ticket 2</h6>
               <div class="card-text">Ticket 2 was blocked</div>
@@ -51,5 +51,7 @@
         </div>
       </div>
     </div>
+    <!-- ticket overview -->
+    <router-outlet></router-outlet>
   </div>
 </div>

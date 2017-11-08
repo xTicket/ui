@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { DashboardModule } from './dashboard'
+import { TicketModule } from './ticket'
 
+import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
 
@@ -10,7 +13,10 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    DashboardModule,
+    TicketModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

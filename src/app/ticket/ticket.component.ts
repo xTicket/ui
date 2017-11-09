@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ticket',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ticket.component.css']
 })
 export class TicketComponent implements OnInit {
+  sub: any;
+  ticketId: string;
 
-  constructor() { }
+  constructor(private activeRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    this.sub = this.activeRoute.params.subscribe(params => {
+      this.ticketId = params['id'];
+   });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }

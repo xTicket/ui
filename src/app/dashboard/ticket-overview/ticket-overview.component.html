@@ -1,3 +1,11 @@
-<div class="col">
-  Overview for {{ ticketId }}
+<div class="col full-height">
+  <div class="card bg-faded dashboard-column">
+    <div class="card-body">
+      <h5 class="card-title text-primary">{{ ticketId }}</h5>
+      <div class="action-buttons">
+        <a [routerLink]="['/ticket', ticketId]">Edit</a>
+      </div>
+      <p>{{ ticketId }} description.</p>
+    </div>
+  </div>
 </div>

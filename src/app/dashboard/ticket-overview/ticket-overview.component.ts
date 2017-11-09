@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./ticket-overview.component.css']
 })
 export class TicketOverviewComponent implements OnInit, OnDestroy {
-  private sub: any;
+  sub: any;
   ticketId: string;
 
   constructor(private activeRoute: ActivatedRoute) {

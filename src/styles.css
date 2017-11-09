@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+div.row.full-height {
+  height: calc(100vh - 70px);
+}
+div.card.dashboard-column {
+  height: 100%;
+}
+div.card.ticket {
+  margin-bottom: 10px;
+}
+div.col.full-height {
+  height: 100%;
+}
+div.dashboard > dashboard-ticket-overview {
+  width: 25%;
+}
+div.action-buttons {
+  font-size: small;
+  text-align: right;
+}

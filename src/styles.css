@@ -18,3 +18,6 @@ div.action-buttons {
   font-size: small;
   text-align: right;
 }
+.font-smaller {
+  font: 0.75rem;
+}

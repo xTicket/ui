@@ -1,11 +1,27 @@
 <div class="col full-height">
   <div class="card bg-faded dashboard-column">
     <div class="card-body">
-      <h5 class="card-title text-primary">{{ ticketId }}</h5>
+      <h5 class="card-title">{{ ticket.title }}</h5>
       <div class="action-buttons">
-        <a [routerLink]="['/ticket', ticketId]">Edit</a>
+        <a [routerLink]="['/ticket', ticket.id]">Edit</a>
+        |
+        <a [routerLink]="['/dashboard']">Close</a>
       </div>
-      <p>{{ ticketId }} description.</p>
+      <div>
+        <p>Reporter: {{ ticket.reporter }}</p>
+        <p>Assign To: {{ ticket.assignto }}</p>
+      </div>
+      <hr />
+      <div class="card-text">
+        <p>{{ ticket.detail || ticket.brief }}</p>
+      </div>
+      <div *ngFor="let comment of comment$ | async">
+        <hr />
+        <blockquote class="blockquote">
+          <p class="mb-0">{{ comment.detail }}</p>
+          <footer class="blockquote-footer font-smaller"><strong>{{ comment.user }}</strong> on <cite title="{{ comment.created }}">{{ relative(comment.created) }}</cite></footer>
+          </blockquote>
+      </div>
     </div>
   </div>
 </div>

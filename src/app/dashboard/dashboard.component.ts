@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+
 import * as $ from 'jquery';
 
 @Component({
@@ -7,12 +10,24 @@ import * as $ from 'jquery';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
+  status$: Observable<any[]>;
+  tickets: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private afs: AngularFirestore) {
   }
 
   ngOnInit() {
+    this.status$ = this.afs.collection('/status', ref => ref.orderBy('order')).valueChanges();
+    this.status$.subscribe(statuses => {
+      this.tickets = {};
+      statuses.forEach(status => {
+        this.tickets[status.id] = this.afs.collection('/ticket', ref => ref.where('status', '==', status.id)).valueChanges();
+      });
+    });
+  }
+
+  ngOnDestroy() {
   }
 
   allowDrop(event) {

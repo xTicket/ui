@@ -1,0 +1,22 @@
+
+<div class="row dashboard full-height">
+  <div class="col" *ngFor="let status of status$ | async">
+    <div class="card dashboard-column">
+      <div class="card-header">
+        <h5>{{ status.name }}</h5>
+      </div>
+      <div class="card-body" (drop)="drop($event)" (dragover)="allowDrop($event)">
+        <div *ngFor="let ticket of tickets[status.id] | async"
+          id="{{ ticket.id }}" [routerLink]="['/dashboard', ticket.id]"
+          class="card ticket bg-light" draggable="true" (dragstart)="drag($event)">
+          <div class="card-body">
+            <h6 class="card-title">{{ ticket.title }}</h6>
+            <div class="card-text">{{ ticket.brief }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ticket overview -->
+  <router-outlet></router-outlet>
+</div>
